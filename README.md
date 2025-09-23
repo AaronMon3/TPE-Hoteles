@@ -1,5 +1,4 @@
 # TPE-Hoteles
-# Trabajo Práctico Especial – Base de Datos de Hoteles
 
 # Integrantes
 - Aaron Rafael Monteagudo (aaronmonteagudo800@gmail.com)  
