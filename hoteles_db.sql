@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-09-2025 a las 00:48:37
+-- Tiempo de generación: 20-10-2025 a las 04:02:43
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,6 +24,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `administrador`
+--
+
+CREATE TABLE `administrador` (
+  `id_admin` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `apellido` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `administrador`
+--
+
+INSERT INTO `administrador` (`id_admin`, `username`, `password`, `email`, `nombre`, `apellido`) VALUES
+(1, 'webadmin', 'admin', 'admin@hotel.com', 'Admin', 'Sistema'),
+(2, 'admin', 'rafael45', 'adsa@asd.com', 'aaron', 'monteagudo');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `habitacion`
 --
 
@@ -32,19 +55,21 @@ CREATE TABLE `habitacion` (
   `numero` varchar(10) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   `id_hotel` int(11) NOT NULL,
-  `id_tipo` int(11) NOT NULL
+  `id_tipo` int(11) NOT NULL,
+  `imagen_url` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `habitacion`
 --
 
-INSERT INTO `habitacion` (`id_habitacion`, `numero`, `precio`, `id_hotel`, `id_tipo`) VALUES
-(1, '101', 5000.00, 1, 1),
-(2, '102', 8000.00, 1, 2),
-(3, '201', 12000.00, 1, 3),
-(4, '301', 5500.00, 2, 1),
-(5, '302', 8500.00, 2, 2);
+INSERT INTO `habitacion` (`id_habitacion`, `numero`, `precio`, `id_hotel`, `id_tipo`, `imagen_url`) VALUES
+(1, '101', 5000.00, 1, 1, 'view/public/uploads/hab_68f595e224a50.jpg'),
+(2, '102', 8000.00, 1, 2, 'view/public/uploads/hab_68f5663114cc4.jpg'),
+(3, '201', 12000.00, 1, 3, 'view/public/uploads/hab_68f5663956d02.jpg'),
+(4, '301', 5500.00, 2, 1, 'view/public/uploads/hab_68f5667941e1f.jpg'),
+(5, '302', 8500.00, 2, 2, 'view/public/uploads/hab_68f5665f2f4e9.jpg'),
+(6, '666', 50000000.00, 1, 1, 'view/public/uploads/hab_68f596807590e.jpg');
 
 -- --------------------------------------------------------
 
@@ -100,17 +125,18 @@ INSERT INTO `reserva` (`id_reserva`, `id_usuario`, `id_habitacion`, `fecha_inici
 CREATE TABLE `tipohabitacion` (
   `id_tipo` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `descripcion` text DEFAULT NULL
+  `descripcion` text DEFAULT NULL,
+  `imagen_url` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tipohabitacion`
 --
 
-INSERT INTO `tipohabitacion` (`id_tipo`, `nombre`, `descripcion`) VALUES
-(1, 'Standard', 'Habitación simple con cama matrimonial.'),
-(2, 'Deluxe', 'Habitación amplia con vista al mar.'),
-(3, 'Suite', 'Habitación de lujo con sala de estar.');
+INSERT INTO `tipohabitacion` (`id_tipo`, `nombre`, `descripcion`, `imagen_url`) VALUES
+(1, 'Standard', 'Habitación simple con cama matrimonial.', 'https://example.com/standard.jpg'),
+(2, 'Deluxe', 'Habitación amplia con vista al mar.', 'https://example.com/deluxe.jpg'),
+(3, 'Suite', 'Habitación de lujo con sala de estar.', 'https://example.com/suite.jpg');
 
 -- --------------------------------------------------------
 
@@ -138,6 +164,14 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `email`, `telefono`, 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `administrador`
+--
+ALTER TABLE `administrador`
+  ADD PRIMARY KEY (`id_admin`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indices de la tabla `habitacion`
@@ -179,10 +213,16 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `administrador`
+--
+ALTER TABLE `administrador`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `id_habitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_habitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `hotel`
