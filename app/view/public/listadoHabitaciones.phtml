@@ -1,0 +1,32 @@
+<h1>Listado de Habitaciones</h1>
+<p>
+    <a href="<?= BASE_URL ?>" style="text-decoration:none; font-weight:bold;">🏠 Inicio</a> | 
+    <a href="<?= BASE_URL ?>/tipos">Ver Tipos de Habitación</a> | 
+    <a href="<?= BASE_URL ?>/admin/login">Login Admin</a>
+</p>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID</th>
+        <th>Número</th>
+        <th>Tipo</th>
+        <th>Precio</th>
+        <th>Imagen</th>
+        <th>Detalle</th>
+    </tr>
+    <?php foreach($habitaciones as $h): ?>
+    <tr>
+        <td><?= $h['id_habitacion'] ?></td>
+        <td><?= $h['numero'] ?></td>
+        <td><?= $h['tipo_nombre'] ?></td>
+        <td>$<?= $h['precio'] ?></td>
+        <td>
+            <?php if($h['imagen_url']): ?>
+            <img src="<?= $h['imagen_url'] ?>" width="100">
+            <?php endif; ?>
+        </td>
+        <td>
+            <a href="<?= BASE_URL ?>/habitaciones/<?= $h['id_habitacion'] ?>">Ver</a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
