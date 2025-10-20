@@ -27,6 +27,9 @@ Incluye **acceso público** a listados y detalle de habitaciones, y un **panel a
 ### 🪜 Pasos
 1. Copiar o clonar el proyecto en:  
    `C:\xampp\htdocs\hoteles`
+   -Explicitamente tienes que crear una carpeta llamada "hoteles" y pegar el contenido en esa carpeta
+      o
+   -Modificar el htacces con la ruta de la carpeta creada en su defecto TPE-Hoteles-Main para mayor facilidad vendra por defecto asi
 2. Iniciar **Apache** y **MySQL** desde XAMPP Control Panel.
 3. Acceder desde el navegador a:  
    [http://localhost/hoteles/]
