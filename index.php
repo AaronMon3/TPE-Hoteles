@@ -2,8 +2,15 @@
 session_start();
 require 'config.php';
 
-// El .htaccess ya reescribe las URLs a parámetros GET
-// Solo necesitamos leer esos parámetros
+function url($path = '') {
+    return BASE_URL . '/' . ltrim($path, '/');
+}
+
+function redirect($path = '') {
+    header('Location: ' . url($path));
+    exit;
+}
+
 $controller = $_GET['controller'] ?? 'habitacion';
 $action = $_GET['action'] ?? 'listar';
 
