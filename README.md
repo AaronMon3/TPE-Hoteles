@@ -9,7 +9,7 @@ El modelo de datos contempla usuarios, hoteles, habitaciones, tipos de habitaci�
 
 # Diagrama Entidad Relación (DER)
 
-![der_2]((https://github.com/user-attachments/assets/5a2ebac4-3398-412e-8588-2dc97fd08bf9))
+![Diagrama del modelo de datos](assets/Diagrama.jpg)
 # Hoteles – Etapa 2
 
 Sistema web dinámico para la **gestión de habitaciones de hotel**, desarrollado con **PHP, MySQL y el patrón MVC**.  
