@@ -1,0 +1,31 @@
+
+
+
+
+
+            <h1><?= $tipo ? "Editar" : "Agregar" ?> Tipo de Habitación</h1>
+<p>
+    <a href="<?= BASE_URL ?>/" style="text-decoration:none;">← Inicio</a> | 
+    <a href="<?= BASE_URL ?>/admin/dashboard">Dashboard</a> | 
+    <a href="<?= BASE_URL ?>/admin/tipos">Lista de Tipos</a>
+</p>
+<form method="POST" action="<?= $tipo ? BASE_URL.'/admin/tipos/editar/'.$tipo['id_tipo'] : BASE_URL.'/admin/tipos/nuevo' ?>" enctype="multipart/form-data">
+    <label>Nombre:</label><br>
+    <input type="text" name="nombre" value="<?= $tipo['nombre'] ?? '' ?>" required><br>
+    
+    <label>Descripción:</label><br>
+    <textarea name="descripcion" rows="4" style="width:100%;"><?= $tipo['descripcion'] ?? '' ?></textarea><br>
+    
+    <label>Imagen (archivo):</label><br>
+    <?php if(!empty($tipo['imagen_url'])): ?>
+        <img src="<?= htmlspecialchars($tipo['imagen_url']) ?>" alt="Imagen" style="max-width:200px;display:block;margin-bottom:8px;">
+    <?php endif; ?>
+    <input type="file" name="imagen_file" accept="image/*"><br>
+    <small>Si subes un archivo, reemplazará la imagen existente. (Máx. 2MB, formatos: JPG, PNG, GIF)</small><br><br>
+
+    <label>O Imagen (URL pública):</label><br>
+    <input type="text" name="imagen_url_text" value="<?= htmlspecialchars($tipo['imagen_url'] ?? '') ?>" placeholder="https://..." style="width:100%;"><br>
+    <small>Si pegas una URL y no subes archivo, la URL será usada.</small><br><br>
+    
+    <button type="submit"><?= $tipo ? "Actualizar" : "Agregar" ?></button>
+</form>
