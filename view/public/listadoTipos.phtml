@@ -1,0 +1,44 @@
+<h1>Listado de Tipos de Habitación</h1>
+<p>
+    <a href="/hoteles/" style="text-decoration:none; font-weight:bold;">🏠 Inicio</a> | 
+    <a href="/hoteles/habitaciones">Ver Habitaciones</a> | 
+    <a href="/hoteles/admin/login">Login Admin</a>
+</p>
+
+<table border="1" cellpadding="5">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Imagen</th>
+            <th>Ver Habitaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if (!empty($tipos)): ?>
+            <?php foreach ($tipos as $tipo): ?>
+                                <tr>
+                    <td><?= htmlspecialchars($tipo['id_tipo']) ?></td>
+                    <td><?= htmlspecialchars($tipo['nombre']) ?></td>
+                    <td><?= htmlspecialchars($tipo['descripcion']) ?></td>
+                    <td>
+                        <?php if(!empty($tipo['imagen_url'])): ?>
+                            <img src="<?= htmlspecialchars($tipo['imagen_url']) ?>" width="100" alt="<?= htmlspecialchars($tipo['nombre']) ?>">
+                        <?php else: ?>
+                            <em>Sin imagen</em>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <a href="/hoteles/tipos/<?= $tipo['id_tipo'] ?>">Ver habitaciones</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+                        <tr>
+                <td colspan="5">No hay tipos de habitación registrados.</td>
+            </tr>
+        <?php endif; ?>
+    </tbody>
+</table>
+
