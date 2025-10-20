@@ -1,10 +1,13 @@
 RewriteEngine On
 Options -Indexes
 
-# Configuración base
-RewriteBase /hoteles/
+# Configuración base (cambiar según tu carpeta)
+# Si está en /hoteles/ usar: RewriteBase /hoteles/
+# Si está en /TPE-Hoteles/ usar: RewriteBase /TPE-Hoteles/
+# Si está en la raíz usar: RewriteBase /
+RewriteBase /TPE-Hoteles/
 
-# Si el archivo o directorio existe, no reescribir
+# Si el archivo o directorio existe
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
@@ -34,7 +37,7 @@ RewriteRule ^tipos/([0-9]+)/?$ index.php?controller=habitacion&action=porTipo&id
 # Ruta por defecto
 RewriteRule ^$ index.php?controller=habitacion&action=listar [L,QSA]
 
-# Proteger archivos sensibles
+# Proteger archivos
 <FilesMatch "^(config\.php|\.htaccess|.*\.sql)$">
     Order deny,allow
     Deny from all
