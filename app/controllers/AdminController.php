@@ -10,7 +10,7 @@ class AdminController {
     private $tipoModel;
 
     public function __construct($pdo) {
-        // Quita session_start() de aquí (ya está en index.php)
+        
         $this->pdo = $pdo;
         $this->usuarioModel = new UsuarioModel($pdo);
         $this->habitacionModel = new HabitacionModel($pdo);
@@ -223,3 +223,4 @@ class AdminController {
     }
 }
 ?>
+
