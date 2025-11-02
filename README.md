@@ -133,14 +133,11 @@ Incluye **acceso público** a listados y detalle de habitaciones, y un **panel a
 |------------------------|
 
 ## Notas sobre la Consigna
-
- Cumple con los **requerimientos funcionales**:
 - Listados públicos, detalle, categorías, ítems por categoría.  
 - Panel administrador con login/logout.  
 - ABM para ítems (habitaciones) y categorías (tipos).  
 - Carga de imágenes por archivo o URL.  
 
-Cumple con los **requerimientos técnicos**:
 - Patrón MVC.  
 - Uso de plantillas `.phtml`.  
 - Conexión dinámica a la base de datos.  
