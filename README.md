@@ -114,12 +114,12 @@ Incluye **acceso público** a listados y detalle de habitaciones, y un **panel a
 
 | Ruta | Descripción |
 |------|--------------|
-| `/hoteles/` | Página de inicio (listado público) |
-| `/hoteles/habitaciones/1` | Detalle de habitación |
-| `/hoteles/tipos` | Listado de tipos de habitación |
-| `/hoteles/tipos/1` | Habitaciones por tipo |
-| `/hoteles/admin/login` | Login admin |
-| `/hoteles/admin/dashboard` | Panel administrativo |
+| `/TPE-Hoteles/` | Página de inicio (listado público) |
+| `/TPE-Hoteles/habitaciones/1` | Detalle de habitación |
+| `/TPE-Hoteles/tipos` | Listado de tipos de habitación |
+| `/TPE-Hoteles/tipos/1` | Habitaciones por tipo |
+| `/TPE-Hoteles/admin/login` | Login admin |
+| `/TPE-Hoteles/admin/dashboard` | Panel administrativo |
 
 |------------------------|
 
@@ -127,7 +127,6 @@ Incluye **acceso público** a listados y detalle de habitaciones, y un **panel a
 - Vistas con plantillas `.phtml`.
 - Patrón **MVC**.
 - `.htaccess` reescribe las URLs mas amigables
-- `index.php` lee esos parámetros (htaccess) y ejecuta el controlador
 - Base de datos **auto-creada** si no existe (`config.php` ejecuta `hoteles_db.sql`).
 - Manejo seguro de archivos e imágenes.
 
