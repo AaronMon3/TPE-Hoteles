@@ -56,9 +56,9 @@ CREATE TABLE `habitacion` (
 --
 
 INSERT INTO `habitacion` (`id_habitacion`, `numero`, `precio`, `id_hotel`, `id_tipo`, `imagen_url`) VALUES
-(1, '101', 5000.00, 1, 1, 'app/view/public/uploads/hab_68f669e498729.jpg'),
-(3, '201', 12000.00, 1, 3, 'app/view/public/uploads/hab_68f66a3396361.jpg'),
-(5, '302', 8500.00, 2, 2, 'app/view/public/uploads/hab_68f669e895fc0.jpg');
+(1, '101', 5000.00, 1, 1, 'https://ejemplo.com/habitacion1.jpg'),
+(3, '201', 12000.00, 1, 3, 'https://ejemplo.com/habitacion2.jpg'),
+(5, '302', 8500.00, 2, 2, 'https://ejemplo.com/habitacion3.jpg');
 
 -- --------------------------------------------------------
 
@@ -123,9 +123,9 @@ CREATE TABLE `tipohabitacion` (
 --
 
 INSERT INTO `tipohabitacion` (`id_tipo`, `nombre`, `descripcion`, `imagen_url`) VALUES
-(1, 'Standard', 'Habitación simple con cama matrimonial.', 'app/view/public/uploads/tipo_68f66a19f19f3.jpg'),
-(2, 'Deluxe', 'Habitación amplia con vista al mar.', 'app/view/public/uploads/tipo_68f66a21b78d4.jpg'),
-(3, 'Suite', 'Habitación de lujo con sala de estar.', 'app/view/public/uploads/tipo_68f66a2668f13.jpg');
+(1, 'Standard', 'Habitación simple con cama matrimonial.', 'https://ejemplo.com/tipo1.jpg'),
+(2, 'Deluxe', 'Habitación amplia con vista al mar.', 'https://ejemplo.com/tipo2.jpg'),
+(3, 'Suite', 'Habitación de lujo con sala de estar.', 'https://ejemplo.com/tipo3.jpg');
 
 -- --------------------------------------------------------
 
