@@ -1,0 +1,23 @@
+<?php
+$title = 'Detalle Habitación';
+require __DIR__ . '/../header.phtml';
+?>
+
+
+    <div class="container">
+    <a href="<?= url('habitaciones') ?>">Volver al listado</a>
+
+        <div class="card" style="margin-top:12px">
+            <h1>Habitación <?= htmlspecialchars($habitacion['numero']) ?></h1>
+
+            <p><strong>Tipo:</strong> <?= htmlspecialchars($habitacion['tipo_nombre'] ?? '') ?></p>
+            <p><strong>Hotel:</strong> <?= htmlspecialchars($habitacion['hotel_nombre'] ?? '') ?></p>
+            <p><strong>Precio:</strong> $<?= htmlspecialchars($habitacion['precio']) ?></p>
+
+            <?php if (!empty($habitacion['imagen_url'])): ?>
+                <p><img src="<?= htmlspecialchars($habitacion['imagen_url']) ?>" alt="<?= htmlspecialchars($habitacion['tipo_nombre'] ?? '') ?>" style="max-width:320px;display:block;margin-top:8px"></p>
+            <?php else: ?>
+                <p><em>Imagen no disponible</em></p>
+            <?php endif; ?>
+        </div>
+    </div>

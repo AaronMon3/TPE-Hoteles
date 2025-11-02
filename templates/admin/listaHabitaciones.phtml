@@ -1,0 +1,33 @@
+<?php
+$title = 'Admin - Lista Habitaciones';
+require __DIR__ . '/../header.phtml';
+?>
+
+    <h1>Lista de Habitaciones</h1>
+    <p>
+        <a href="<?= url('admin/dashboard') ?>">Dashboard</a> |
+        <a href="<?= url('admin/habitaciones/nueva') ?>">Agregar nueva</a> |
+        <a href="<?= BASE_URL ?>/">Ver sitio público</a>
+    </p>
+
+    <?php if (!empty($habitaciones)): ?>
+        <table border="1" cellpadding="6">
+            <tr><th>ID</th><th>Número</th><th>Precio</th><th>Tipo</th><th>Acciones</th></tr>
+            <?php foreach ($habitaciones as $h): ?>
+                <tr>
+                    <td><?= (int)$h['id_habitacion'] ?></td>
+                    <td><?= htmlspecialchars($h['numero']) ?></td>
+                    <td>$<?= htmlspecialchars($h['precio']) ?></td>
+                    <td><?= htmlspecialchars($h['tipo_nombre'] ?? '') ?></td>
+                    <td>
+                        <a href="<?= url('admin/habitaciones/editar/' . (int)$h['id_habitacion']) ?>">Editar</a>
+                        |
+                        <a href="<?= url('admin/habitaciones/eliminar/' . (int)$h['id_habitacion']) ?>" onclick="return confirm('Eliminar habitación?')">Eliminar</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    <?php else: ?>
+        <p>No hay habitaciones.</p>
+    <?php endif; ?>
+<?php require __DIR__ . '/../footer.phtml'; ?>

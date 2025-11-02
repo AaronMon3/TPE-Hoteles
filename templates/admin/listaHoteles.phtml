@@ -1,0 +1,30 @@
+<?php
+$title = 'Lista de Hoteles';
+require __DIR__ . '/../header.phtml';
+?>
+
+<h1>Hoteles</h1>
+
+<p><a href="<?= url('admin/hoteles/nuevo') ?>" class="btn">Nuevo Hotel</a></p>
+
+<?php if (!empty($hoteles)): ?>
+    <div class="hoteles-grid">
+        <?php foreach ($hoteles as $h): ?>
+            <article class="hotel-card card">
+                <div class="card-body">
+                    <h3 class="hotel-name"><?= htmlspecialchars($h['nombre']) ?> <small class="muted">#<?= (int)$h['id_hotel'] ?></small></h3>
+                    <div class="hotel-meta">
+                        <div><?= htmlspecialchars($h['ciudad']) ?> — <?= htmlspecialchars($h['direccion']) ?></div>
+                        <div>Tel: <?= htmlspecialchars($h['telefono']) ?> | Email: <?= htmlspecialchars($h['email']) ?></div>
+                    </div>
+                    <div class="hotel-actions" style="margin-top:10px">
+                        <a class="btn" href="<?= url('admin/hoteles/editar/' . (int)$h['id_hotel']) ?>">Editar</a>
+                        <a class="btn btn-danger" href="<?= url('admin/hoteles/eliminar/' . (int)$h['id_hotel']) ?>" onclick="return confirm('Eliminar hotel?')">Eliminar</a>
+                    </div>
+                </div>
+            </article>
+        <?php endforeach; ?>
+    </div>
+<?php else: ?>
+    <p>No hay hoteles cargados.</p>
+<?php endif; ?>

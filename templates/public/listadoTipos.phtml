@@ -1,0 +1,26 @@
+<?php
+$title = 'Tipos de Habitaciones';
+require __DIR__ . '/../header.phtml';
+?>
+
+    <h1>Tipos de Habitaciones</h1>
+
+    <?php if (!empty($tipos)): ?>
+        <div class="tipos-grid">
+            <?php foreach ($tipos as $tipo): ?>
+                <?php
+                    $desc = $tipo['descripcion'] ?? '';
+                    $short = mb_strlen($desc) > 200 ? mb_substr($desc, 0, 197) . '...' : $desc;
+                ?>
+                <article class="tipo-card card">
+                    <div class="card-body">
+                        <h3 class="tipo-title"><a href="<?= url('tipos/' . (int)$tipo['id_tipo']) ?>"><?= htmlspecialchars($tipo['nombre']) ?></a></h3>
+                        <p class="descripcion"><?= htmlspecialchars($short) ?></p>
+                    </div>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    <?php else: ?>
+        <p>No hay tipos cargados.</p>
+    <?php endif; ?>
+    <?php require __DIR__ . '/../footer.phtml'; ?>

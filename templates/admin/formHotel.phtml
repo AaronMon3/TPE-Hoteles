@@ -1,0 +1,38 @@
+<?php
+$title = isset($hotel) ? 'Editar Hotel' : 'Agregar Hotel';
+require __DIR__ . '/../header.phtml';
+?>
+<div class="container">
+    <h1><?= $title ?></h1>
+    <form method="post" action="<?= isset($hotel) ? url('admin/hoteles/editar/' . (int)$hotel['id_hotel']) : url('admin/hoteles/nueva') ?>">
+        <?php if (!empty($hotel['id_hotel'])): ?>
+            <input type="hidden" name="id_hotel" value="<?= (int)$hotel['id_hotel'] ?>">
+        <?php endif; ?>
+
+        <label>Nombre
+            <input type="text" name="nombre" value="<?= htmlspecialchars($hotel['nombre'] ?? '') ?>" required>
+        </label>
+
+        <label>Dirección
+            <input type="text" name="direccion" value="<?= htmlspecialchars($hotel['direccion'] ?? '') ?>" required>
+        </label>
+
+        <label>Ciudad
+            <input type="text" name="ciudad" value="<?= htmlspecialchars($hotel['ciudad'] ?? '') ?>" required>
+        </label>
+
+        <label>Teléfono
+            <input type="text" name="telefono" value="<?= htmlspecialchars($hotel['telefono'] ?? '') ?>">
+        </label>
+
+        <label>Email
+            <input type="email" name="email" value="<?= htmlspecialchars($hotel['email'] ?? '') ?>">
+        </label>
+
+        <div style="margin-top:12px">
+            <button type="submit">Guardar</button>
+        </div>
+    </form>
+</div>
+
+<?php require __DIR__ . '/../footer.phtml'; ?>
