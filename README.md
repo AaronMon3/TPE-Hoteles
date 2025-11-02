@@ -88,16 +88,12 @@ Incluye **acceso público** a listados y detalle de habitaciones, y un **panel a
 
 ```
 /hoteles
-|── controllers/        # Controladores principales
-|── models/             # Modelos (acceso a base de datos)
-|── view/
-|   |──uploads/         # Imágenes subidas
-|   |── public/         # Secciones públicas
-|   └── admin/          # Panel administrativo
-|── config.php          # Configuración y conexión BD
-|── hoteles_db.sql      # Script SQL de creación inicial
-|── index.php           # Front Controller (punto de entrada)
-└── .htaccess           # Router
+|── app        
+|── templates             
+|── config.php          
+|── hoteles_db.sql      
+|── index.php           
+└── .htaccess           
 ```
 
 |------------------------|
