@@ -196,7 +196,7 @@ class AdminController
                 header('Location: ' . url('admin/hoteles'));
                 exit;
             } catch (\Throwable $e) {
-                // capture error and show it in the form instead of blank page
+             
                 $error = $e->getMessage();
             }
         }
@@ -214,7 +214,7 @@ class AdminController
             try {
                 $this->hotelModel->delete($id);
             } catch (\Throwable $e) {
-                // Capturar error y redirigir con mensaje
+                
                 header('Location: ' . url('admin/hoteles'));
                 exit;
             }
