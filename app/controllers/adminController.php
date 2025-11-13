@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once __DIR__ . '/../models/adminModel.php';
 require_once __DIR__ . '/../models/habitacionModel.php';
 require_once __DIR__ . '/../models/tipoHabitacionModel.php';
@@ -136,6 +136,7 @@ class AdminController
             $data = [
                 'nombre' => $_POST['nombre'] ?? null,
                 'descripcion' => $_POST['descripcion'] ?? null,
+                'imagen_url' => $_POST['imagen_url'] ?? null,
             ];
             if ($id) {
                 $this->tipoModel->update($id, $data);
@@ -210,10 +211,17 @@ class AdminController
         $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
         $hotel = $this->hotelModel->getById($id);
         if ($hotel) {
-            $this->hotelModel->delete($id);
+            try {
+                $this->hotelModel->delete($id);
+            } catch (\Throwable $e) {
+                // Capturar error y redirigir con mensaje
+                header('Location: ' . url('admin/hoteles'));
+                exit;
+            }
         }
         header('Location: ' . url('admin/hoteles'));
         exit;
     }
 
 }
+
