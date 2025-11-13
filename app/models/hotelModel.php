@@ -42,7 +42,12 @@ class HotelModel extends model
     }
     public function delete(int $id)
     {
+        $stmtHabitaciones = $this->pdo->prepare('DELETE FROM habitacion WHERE id_hotel = :id');
+        $stmtHabitaciones->execute([':id' => $id]);
+        
+        
         $stmt = $this->pdo->prepare('DELETE FROM hotel WHERE id_hotel = :id');
         return $stmt->execute([':id' => $id]);
     }
 }
+
