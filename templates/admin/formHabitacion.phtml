@@ -1,0 +1,55 @@
+<?php
+$title = (!empty($habitacion['id_habitacion'])) ? 'Editar habitación' : 'Agregar habitación';
+require __DIR__ . '/../header.phtml';
+?>
+
+<h1><?= $title ?></h1>
+<p>
+    <a href="<?= url('admin/dashboard') ?>">Dashboard</a> |
+    <a href="<?= url('admin/habitaciones') ?>">Volver a la lista</a>
+</p>
+
+<form method="post" enctype="multipart/form-data" action="<?= (!empty($habitacion['id_habitacion'])) ? url('admin/habitaciones/editar/' . (int)$habitacion['id_habitacion']) : url('admin/habitaciones/nueva') ?>">
+    <?php if (!empty($habitacion['id_habitacion'])): ?>
+        <input type="hidden" name="id_habitacion" value="<?= (int)$habitacion['id_habitacion'] ?>">
+    <?php endif; ?>
+
+    <label>Número
+        <input type="text" name="numero" value="<?= htmlspecialchars($habitacion['numero'] ?? '') ?>" required>
+    </label>
+
+    <label>Precio
+        <input type="number" step="0.01" name="precio" value="<?= htmlspecialchars($habitacion['precio'] ?? '') ?>" required>
+    </label>
+
+    <label>Hotel
+        <select name="id_hotel" required>
+            <option value="">-- seleccionar --</option>
+            <?php foreach ($hoteles as $hotel): ?>
+                <option value="<?= (int)$hotel['id_hotel'] ?>" <?= isset($habitacion['id_hotel']) && $habitacion['id_hotel']==$hotel['id_hotel'] ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($hotel['nombre']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </label>
+
+    <label>Tipo de habitación
+        <select name="id_tipo" required>
+            <option value="">-- seleccionar --</option>
+            <?php foreach ($tipos as $tipo): ?>
+                <option value="<?= (int)$tipo['id_tipo'] ?>" <?= isset($habitacion['id_tipo']) && $habitacion['id_tipo']==$tipo['id_tipo'] ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($tipo['nombre']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </label>
+
+    <label>URL de la imagen
+        <input type="url" name="imagen_url" value="<?= htmlspecialchars($habitacion['imagen_url'] ?? '') ?>" placeholder="https://ejemplo.com/imagen.jpg">
+    </label>
+
+    <div style="margin-top:12px">
+        <button type="submit">Guardar</button>
+    </div>
+</form>
+<?php require __DIR__ . '/../footer.phtml'; ?>

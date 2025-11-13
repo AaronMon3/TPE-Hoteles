@@ -1,0 +1,30 @@
+<?php
+$title = 'Admin Dashboard';
+require __DIR__ . '/../header.phtml';
+?>
+<div class="container">
+    <h1>Dashboard</h1>
+    <div class="admin-grid">
+        <a class="admin-card" href="<?= url('admin/habitaciones') ?>">
+            <strong>Habitaciones</strong>
+            <div class="muted">Administrar habitaciones</div>
+        </a>
+
+        <a class="admin-card" href="<?= url('admin/tipos') ?>">
+            <strong>Tipos</strong>
+            <div class="muted">Administrar tipos</div>
+        </a>
+
+        <a class="admin-card" href="<?= url('admin/hoteles') ?>">
+            <strong>Hoteles</strong>
+            <div class="muted">Administrar hoteles</div>
+        </a>
+
+        <a class="admin-card admin-logout" href="<?= url('admin/logout') ?>">
+            <strong>Logout</strong>
+            <div class="muted">Cerrar sesión</div>
+        </a>
+    </div>
+</div>
+
+<?php require __DIR__ . '/../footer.phtml'; ?>

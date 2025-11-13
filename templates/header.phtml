@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><?= htmlspecialchars($title ?? 'TPE Hoteles') ?></title>
+    <link rel="stylesheet" href="<?= rtrim(BASE_URL, '/') ?>/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav>
+            <a href="<?= url('') ?>">Inicio</a> |
+            <a href="<?= url('habitaciones') ?>">Habitaciones</a> |
+            <a href="<?= url('tipos') ?>">Tipos</a> |
+            <a href="<?= url('admin/login') ?>">Admin</a>
+        </nav>
+    </header>
+    <main class="container">
