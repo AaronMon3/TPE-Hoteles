@@ -6,23 +6,39 @@ require __DIR__ . '/../header.phtml';
     <h1>Habitaciones</h1>
 
     <?php if (!empty($habitaciones)): ?>
-        <div class="habitaciones-grid">
+        <table border="1" cellpadding="6" style="border-collapse:collapse; width:100%;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Número</th>
+                    <th>Precio</th>
+                    <th>Tipo</th>
+                    <th>Hotel</th>
+                    <th>Imagen</th>
+                    <th>Detalle</th>
+                </tr>
+            </thead>
+            <tbody>
             <?php foreach ($habitaciones as $h): ?>
                 <?php $img = $h['imagen_url'] ?? ''; ?>
-                <article class="habitacion-card">
-                    <?php if ($img): ?>
-                        <div class="card-thumb"><img src="<?= htmlspecialchars($img) ?>" alt="<?= htmlspecialchars($h['tipo_nombre'] ?? '') ?>" style="max-width:200px"></div>
-                    <?php else: ?>
-                        <div class="card-thumb placeholder" aria-hidden="true">No image</div>
-                    <?php endif; ?>
-                    <div class="card-body">
-                        <h3><a href="<?= url('habitaciones/' . (int)$h['id_habitacion']) ?>"><?= htmlspecialchars($h['numero']) ?> — $<?= htmlspecialchars($h['precio']) ?></a></h3>
-                        <p class="tipo">Tipo: <?= htmlspecialchars($h['tipo_nombre'] ?? 'Desconocido') ?></p>
-                        <p class="hotel">Hotel: <?= htmlspecialchars($h['hotel_nombre'] ?? 'Desconocido') ?></p>
-                    </div>
-                </article>
+                <tr>
+                    <td><?= (int)$h['id_habitacion'] ?></td>
+                    <td><?= htmlspecialchars($h['numero']) ?></td>
+                    <td>$<?= htmlspecialchars($h['precio']) ?></td>
+                    <td><?= htmlspecialchars($h['tipo_nombre'] ?? 'Desconocido') ?></td>
+                    <td><?= htmlspecialchars($h['hotel_nombre'] ?? 'Desconocido') ?></td>
+                    <td>
+                        <?php if ($img): ?>
+                            <img src="<?= htmlspecialchars($img) ?>" alt="<?= htmlspecialchars($h['tipo_nombre'] ?? '') ?>" style="max-width:120px; height:auto">
+                        <?php else: ?>
+                            —
+                        <?php endif; ?>
+                    </td>
+                    <td><a href="<?= url('habitaciones/' . (int)$h['id_habitacion']) ?>">Ver</a></td>
+                </tr>
             <?php endforeach; ?>
-        </div>
+            </tbody>
+        </table>
     <?php else: ?>
         <p>No hay habitaciones cargadas.</p>
     <?php endif; ?>
